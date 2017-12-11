@@ -54,5 +54,17 @@ class Thread extends MyModel
 
     }
 
+    public function tags(){
+        //TODO: USE DB SELECT TO RETURN THE TAGS
+        return $this->belongsToMany(Tag::class);
+//       $result = DB::select( select `tags`.*, `
+//tag_thread`.`thread_id` as `pivot_thread_id`, `tag_thread`.`tag_id` as
+//        `pivot_tag_id` from `tags` inner join `tag_thread` on `tags`.`id` = `tag_thread`.`tag_id` where `tag
+//_thread`.`thread_id` = 3);
+//        $result = DB::statement('SELECT name FROM tags WHERE tags.id = post_tag.tag_id AND post_tag.pos')
+    }
+
+
+
 }
 

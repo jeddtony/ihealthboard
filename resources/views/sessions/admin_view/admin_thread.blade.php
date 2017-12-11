@@ -37,7 +37,10 @@
                     <a class="nav-link" href="/user_comment">Comments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Posts</a>
+                    <a class="nav-link" href="#">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Guest Questions</a>
                 </li>
             </ul>
 
@@ -60,7 +63,7 @@
                 </div>
                 <div class="col-6 col-sm-3 placeholder">
                     <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-                    <h4>Posts</h4>
+                    <h4>Users</h4>
                     <span class="text-muted">Something else</span>
                 </div>
 
@@ -72,23 +75,24 @@
                     <thead>
                     <tr>
                         <th>Threads</th>
-                        <th>{{$threads->count()}}</th>
-                    </tr>
-
-                    <tr>
+                        <th>Views</th>
+                        <th>Author</th>
                         <th>Comments</th>
-                        <th>{{$comments->count()}}</th>
-
-                    </tr>
-
-                    <tr>
-                        <th>Posts</th>
-                        <th>Header</th>
-
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($threads as $thread)
+                    <tr>
+                        <td><a href="/threads/{{$thread->id}}"> {{$thread->title}} </a></td>
+                        <td>{{$thread->number_of_views}}</td>
+                        <td>{{$thread->user->name}}</td>
+                        <td>{{count($thread->comments)}}</td>
+                        <td><a href="/admin/threads/edit/{{$thread->id}}"> Edit </a> &nbsp;
+                            <a href="/admin/threads/delete/{{$thread->id}}"> Delete </a> </td>
+                    </tr>
 
+                        @endforeach
                     </tbody>
                 </table>
             </div>

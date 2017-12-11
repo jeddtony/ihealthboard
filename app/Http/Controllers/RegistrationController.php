@@ -33,15 +33,7 @@ class RegistrationController extends Controller
         auth()->login($user);
 
         // SEND THEM A WELCOME EMAIL
-        \Mail::to($user)->send(new Welcome);
-
-//        \Mail::to($user)->send(['text' => 'welcome'], ['name', 'Jedijedi']);
-
-
-//        \Illuminate\Support\Facades\Mail::send(['text' => 'emails.welcome'], ['name', 'Jedijedi'], function ($message){
-//            $message->to('nowjdeji@gmail.com', 'to nowj')->subject('Test Email');
-//           $message->from('jedtony.jt@gmail.com', 'jed');
-//        });
+//        \Mail::to($user)->send(new Welcome);
 
 
         // REDIRECT TO THE HOME PAGE

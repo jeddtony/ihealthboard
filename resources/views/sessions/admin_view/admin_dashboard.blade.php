@@ -37,7 +37,10 @@
                     <a class="nav-link" href="/user_comment">Comments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Posts</a>
+                    <a class="nav-link" href="#">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Guest Questions</a>
                 </li>
             </ul>
 
@@ -60,7 +63,7 @@
                 </div>
                 <div class="col-6 col-sm-3 placeholder">
                     <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-                    <h4>Posts</h4>
+                    <h4>Users</h4>
                     <span class="text-muted">Something else</span>
                 </div>
 

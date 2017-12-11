@@ -12,6 +12,36 @@
 */
 
 
+Route::group(['middleware' => ['auth', 'admin']], function (){
+    Route::get('/admin', 'AdminController@index');
+});
+
+Route::group(['middleware' => ['auth', 'admin']], function (){
+    Route::get('/admin/threads', 'AdminController@getThreads');
+});
+
+Route::group(['middleware' => ['auth', 'admin']], function (){
+    Route::get('/admin/users', 'AdminController@getUsers');
+});
+
+Route::group(['middleware' => ['auth', 'admin']], function (){
+    Route::get('/admin/threads/delete/{thread_id}', 'AdminController@deleteThread');
+});
+
+Route::group(['middleware' => ['auth', 'admin']], function (){
+    Route::delete('/admin/threads/delete/{thread_id}', 'ThreadController@destroy');
+});
+
+
+Route::group(['middleware' => ['auth', 'admin']], function (){
+    Route::get('/admin/threads/edit/{thread_id}', 'AdminController@editThread');
+});
+
+Route::group(['middleware' => ['auth', 'admin']], function (){
+    Route::patch('/admin/threads/edit/{thread_id}', 'ThreadController@update');
+});
+
+
 Route::get('/', 'ThreadController@index')->name('home');
 
 Route::get('/page/{page}', 'ThreadController@nextPage');
@@ -46,4 +76,11 @@ Route::get('/create-thread', function (){
 
 Route::post('/thread', 'ThreadController@store');
 Route::post('/new_thread', 'ThreadController@store');
+
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode1 = Artisan::call('config:cache');
+    dd("cache cleared by jed");
+});
+
 

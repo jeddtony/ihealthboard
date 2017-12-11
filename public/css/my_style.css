@@ -62,3 +62,16 @@ h1 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+
+a{
+ text-decoration: none;
+}
+
+a:hover{
+  color: #685d20;
+  text-decoration: none
+}
+
+a:visited{
+  color: #1a712c;
+}

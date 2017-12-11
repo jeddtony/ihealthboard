@@ -41,6 +41,7 @@ class ThreadController extends Controller
 //        $media = $thread->threadMedia();
         $media = ThreadMedia::getThisThreadMedia($thread);
 //        dd($media);
+        $thread->increment('number_of_views');
         return view('layouts.thread', compact('thread', 'media'));
     }
 
@@ -60,5 +61,28 @@ class ThreadController extends Controller
         $threadMediaController->multipleUpload(request('file_upload'), $thread->id);
         return back();
     }
+
+    public function destroy($id){
+        $thread = Thread::findOrFail($id);
+        $thread->delete();
+        return redirect('/admin/threads');
+
+    }
+
+    public function update($id){
+        $thread = Thread::findOrFail($id);
+
+        $this->validate(request(), [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        $input = request()->all();
+
+        $thread->fill($input)->save();
+
+        return redirect('/admin/threads');
+    }
+
 
 }
